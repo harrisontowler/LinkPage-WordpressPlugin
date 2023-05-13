@@ -12,7 +12,11 @@ The code recognizes whether or not the user has uploaded one of the URLs that wi
 The user also has the option to rearrange the elements in real-time without a save button. Once the user places the element where they would like it to go in the new position, it is automatically saved on the back end: [INSERT IMAGE]
 
 Any visitor to the site is able search for a username, it checks the database whether the username exists or not and is shown front end whether it is available or not.
+Before a user searches:
 ![](IMG-screenshots/beforesearch.png)
+After a user searches:
+![](IMG-screenshots/aftersearch.png)
+The second image shows the word "no" as the username does not exist. This is not best practice and I will be ammending this but for functionality sake, the database query is working.
 
 The users also have the option to delete their link-element uploads from the database with the cross button on the left. (this is of course only seen when the users session is live)
 
