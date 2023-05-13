@@ -12,6 +12,8 @@ The code recognizes whether or not the user has uploaded one of the URLs that wi
 The user also has the option to rearrange the elements in real-time without a save button. Once the user places the element where they would like it to go in the new position, it is automatically saved on the back end: [INSERT IMAGE]
 
 Any visitor to the site is able search for a username, it checks the database whether the username exists or not and is shown front end whether it is available or not.
+![Screenshot of my app](https://github.com/harrisontowler/LinkPage-WordpressPlugin/IMG-screenshots
+/Screenshot 2023-05-13 21.52.40.png
 
 The users also have the option to delete their link-element uploads from the database with the cross button on the left. (this is of course only seen when the users session is live)
 
