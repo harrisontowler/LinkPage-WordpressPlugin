@@ -1,0 +1,232 @@
+
+.youtube-dropdown-btn {
+  position: absolute;
+  padding:10px;
+  background-color:#ffffff00;
+  left: 5px;
+ 
+}
+
+.hidden {
+    display: none;
+}
+
+
+#tcu-border-radius{outline-color:none!important;}
+
+.twitter-widget-container{
+width:100%!important;}
+
+.twitter-dropdown-btn {
+  position: absolute;
+  padding:10px;
+  background-color:#ffffff00;
+  left: 5px;
+ 
+}
+
+
+@media(min-width: 1024pxpx){
+.youtube-widget-container{
+height:400px;}}
+
+.sc-dropdown-btn {
+  position: absolute;
+  padding:10px;
+  background-color:#ffffff00;
+  left: 5px;
+ 
+}
+
+.spotify-dropdown-btn {
+  position: absolute;
+  padding:10px;
+  background-color:#ffffff00;
+  left: 5px;
+ 
+}
+
+.qggWUYwLKItGcy_yWVVw{
+background-color:red!important;}
+
+@media(max-width: 767px) {
+  #tcu-form {
+    padding-left:5%;
+    padding-right:5%;
+  }
+}
+
+
+
+
+.own-profile ui-sortable{
+padding-left:10%;
+padding-right:10%;}
+
+#tcu-text-container{padding-left:10%;
+padding-right:10%;}
+
+
+#tcu-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+html, body {
+  height: 100%;
+  
+}
+
+
+
+.search-username-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-username-form label {
+  margin-right: 10px;
+  border-radius:40px;
+}
+
+.search-username-form input[type="text"] {
+  width: 200px;
+}
+
+.search-username-form button[type="submit"] {
+  background-color: #0073aa;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.search-username-result {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
+h4, .wc-block-grid__product-title {
+    color: #000000!important;
+    text-align: center;}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+#tcu-text {
+  width: 100%;
+  min-height: 50px;
+  resize: vertical;
+}
+
+#tcu-url,
+#tcu-border-radius {
+  width: 100%;
+}
+
+
+
+
+.tcu-text-item {
+  position: relative;
+  cursor: move;
+}
+
+
+
+
+
+.tcu-text-item .handle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  cursor: move;
+}
+
+.handle {
+  display: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: grab;
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.delete-icon {
+  display: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+
+/* Show the handle when the user is logged in and on their own profile */
+#tcu-text-container.own-profile .handle {
+  display: inline-block;
+}
+
+
+
+#submiturl{border-radius:30px;}
+
+label {
+    position: relative;
+    font-weight: 400;
+    padding-left: -50px!important;
+    margin-right: -64px;
+border-radius:12px;}
+
+#linkurl{padding-left:65px!important;
+border-radius:8px;}
+
+
+
+.input-group-prepend {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.input-group-text {
+    border: none;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+#tcu-url {
+    padding-left: 0px!important; /* Adjust this value based on the width of the hutl.ink/ text */
+    border: 1px solid #ced4da; /* Adjust this value to match the border color of the input field */
+    border-radius: 3px;
+}
+
+
+
+/* Show the delete icon when the user is logged in and on their own profile */
+#tcu-text-container.own-profile .delete-icon {
+  display: inline-block;
+}
