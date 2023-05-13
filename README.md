@@ -13,6 +13,7 @@ The user also has the option to rearrange the elements in real-time without a sa
 
 Any visitor to the site is able search for a username, it checks the database whether the username exists or not and is shown front end whether it is available or not.
 
+The users also have the option to delete their link-element uploads from the database with the cross button on the left. (this is of course only seen when the users session is live)
 
 A summary of the code:
 
