@@ -8,7 +8,9 @@ Functionality: What does the code actually do? The way I have structured the cod
 If the user chooses not to press the toggle button and simply wants to visit the link that the user uploaded (this is not visible on the front end), they can simply press the element with the user's desired text to visit the URL: [INSERT IMAGE]
 
 The code recognizes whether or not the user has uploaded one of the URLs that will create a widget, and assigns the toggle button accordingly. Along with this, the user has the ability to choose the border color, background color, text color, text, and border radius of the element before uploading it, so they can customize it as they please. This will be displayed as a preview shown in real-time, so they can decide whether they would like to amend the CSS of the element before uploading: ![](IMG-screenshots/inputfieldbefore.png)
+
 After selecting custong CSS/text/url:
+
 ![](IMG-screenshots/inputfieldafter.png)
 
 The user also has the option to rearrange the elements in real-time without a save button. Once the user places the element where they would like it to go in the new position, it is automatically saved on the back end: [INSERT IMAGE]
