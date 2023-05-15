@@ -52,3 +52,40 @@ It provides a search functionality for checking if a username exists.
 The plugin enqueues scripts and sets up AJAX callbacks for the search username functionality.
 
 Overall, this plugin allows authors to upload text with customized styles and display them on the front end using shortcodes. It also supports embedding media content from popular platforms and provides features for managing and organizing the uploaded text items.
+
+
+Code snippets for iframe widgets (not including toggle buttons so their will be slightly missing code):
+
+//Twitter iframe url conversion 
+if (preg_match('/(?:twitter\.com\/\w+\/status\/\d+)/i', $result->url)) {
+    $output .= '<div id="twitter-widget-container-' . esc_attr($result->id) . '" class="twitter-widget-container" style="display: none; margin-top:-10px; text-align:center;"><blockquote class="twitter-tweet" data-dnt="true"><a href="' . esc_attr($result->url) . '"></a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>';
+}$output .= '</div></a>';
+
+![](IMG-screenshots/twitterembed.png)
+
+
+
+//Soundcloud iframe url conversion
+if (preg_match('/(?:soundcloud\.com|snd\.sc)\/[^.]+$/i', $result->url)) {
+    $output .= '<div id="sc-widget-container-' . esc_attr($result->id) . '" class="sc-widget-container" style="display: none; margin-top:-10px;"><iframe id="sc-widget-' . esc_attr($result->id) . '" src="https://w.soundcloud.com/player/?url=' . urlencode($result->url) . '&auto_play=false&buying=true&liking=true&download=true&sharing=true&show_artwork=true&show_comments=false&show_playcount=true&show_user=true&hide_related=true&visual=false&start_track=0&callback=true" frameborder="no" scrolling="no" style="width:100%; height:400px;"></iframe></div>';
+}
+
+![](IMG-screenshots/soundcloudembed.png)
+
+//Spotify iframe url conversion
+if (preg_match('/(?:open\.spotify\.com)/i', $result->url)) {
+    $output .= '<div id="spotify-widget-container-' . esc_attr($result->id) . '" class="spotify-widget-container" style="display: none; margin-top:-10px;"><iframe id="spotify-widget-' . esc_attr($result->id) . '" src="https://open.spotify.com/embed?uri=' . urlencode($result->url) . '" frameborder="no" allow="autoplay; encrypted-media" allowtransparency="true" style="width:100%; height:80px;"></iframe></div>';
+}
+
+![](IMG-screenshots/spotifyembed.png)
+
+//Youtube iframe url conversion
+if (preg_match('/(?:youtube\.com|youtu\.be)/i', $result->url)) {
+    // Extract the video ID from the URL
+    preg_match('/(?:v=|youtu\.be\/)([^&]+)/', $result->url, $video_id_matches);
+    $video_id = isset($video_id_matches[1]) ? $video_id_matches[1] : '';
+
+    $output .= '<div id="youtube-widget-container-' . esc_attr($result->id) . '" class="youtube-widget-container" style="display: none; margin-top:-10px; "><iframe id="youtube-widget-' . esc_attr($result->id) . '" src="https://www.youtube.com/embed/' . $video_id . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:100%; border: 2px solid white; border-radius:12px;"></iframe></div>';
+}
+
+![](IMG-screenshots/youtubeembed.png)
