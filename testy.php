@@ -31,7 +31,7 @@ function tcu_create_form() {
 
   </div>  
   <label for="tcu-text">' . __('Text', 'text-color-uploader') . '</label>  
-  <textarea name="tcu-text" id="tcu-text" style="resize:none; "></textarea>  
+  <textarea name="tcu-text" id="tcu-text" maxlength="80" style="resize:none; "></textarea>  
   <label for="tcu-url">' . __('URL', 'text-color-uploader') . '</label>  
   <input type="url" name="tcu-url" id="tcu-url" style="padding-left:10px;">  
   <div class="input-row">  
