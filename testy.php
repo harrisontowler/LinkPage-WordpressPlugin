@@ -2,7 +2,7 @@
 /*
 Plugin Name: Text Color Uploader
 Plugin URI: https://www.example.com/text-color-uploader
-Description: Allows authors to upload text with a selected color and border radius, which is then displayed on the front end via shortcode. Also allows changing the background color of .site-content.
+Description: hello
 Version: 1.0
 Author: Your Name
 Author URI: https://www.example.com
@@ -10,82 +10,87 @@ License: GPL2
 Text Domain: text-color-uploader
 */
 
-function tcu_create_form() {
-  if (is_user_logged_in()) {
-    // Get the current user's ID
-    $current_user_id = get_current_user_id();
+function tcu_create_form() {  
+  if (is_user_logged_in()) {  
+  // Get the current user's ID  
+  $current_user_id = get_current_user_id();  
 
-    // Get the profile user's ID
-    if (function_exists('dokan_get_current_user_id') && function_exists('dokan_get_current_profile_id')) {
-      $profile_user_id = dokan_get_current_profile_id();
-    } else {
-      $profile_user_id = get_query_var('author');
-    }
+  // Get the profile user's ID  
+  if (function_exists('dokan_get_current_user_id') && function_exists('dokan_get_current_profile_id')) {  
+  $profile_user_id = dokan_get_current_profile_id();  
+  } else {  
+  $profile_user_id = get_query_var('author');  
+  }  
 
-    // Display the form only if the current user is the profile user
-    if ($current_user_id == $profile_user_id) {
-      $form = '<form id="tcu-form" method="post">
-                 <div id="tcu-preview" style="margin-bottom: 20px;">
-                   <h4>' . __('Link preview', 'text-color-uploader') . '</h4>
-                   <div id="tcu-preview-element" style="padding: 10px; margin-bottom: 10px; text-align: center; display: flex; align-items: center; justify-content: center;"></div>
-                 
-                 </div>
-                 <label for="tcu-text">' . __('Text', 'text-color-uploader') . '</label>
-                 <textarea name="tcu-text" id="tcu-text"></textarea>
-                 <label for="tcu-url">' . __('URL', 'text-color-uploader') . '</label>
-                 <input type="url" name="tcu-url" id="tcu-url" style="padding-left:10px;">
-                 <div class="input-row">
-                   <div class="input-group">
-                     <label for="tcu-color">' . __('Text color', 'text-color-uploader') . '</label>
-                     <input type="color" name="tcu-color" id="tcu-color">
-                   </div>
-                   
-                   
-                   
-                   <div class="input-group">
-                   
-                   
-                   <label for="tcu-div-bg-color">' . __('Link Color', 'text-color-uploader') . '</label>
-<input type="color" name="tcu-div-bg-color" id="tcu-div-bg-color" value="#ffffff" onchange="tcu_update_preview()" />
+  // Display the form only if the current user is the profile user  
+  if ($current_user_id == $profile_user_id) {  
+  $form = '<form id="tcu-form" method="post">  
+  <div id="tcu-preview" style="margin-bottom: 20px;">  
+  <h4>' . __('Link preview', 'text-color-uploader') . '</h4>  
+  <div id="tcu-preview-element" style="padding: 10px; margin-bottom: 10px; text-align: center; display: flex; align-items: center; justify-content: center;"></div>  
 
+  </div>  
+  <label for="tcu-text">' . __('Text', 'text-color-uploader') . '</label>  
+  <textarea name="tcu-text" id="tcu-text"></textarea>  
+  <label for="tcu-url">' . __('URL', 'text-color-uploader') . '</label>  
+  <input type="url" name="tcu-url" id="tcu-url" style="padding-left:10px;">  
+  <div class="input-row">  
+  <div class="input-group">  
+  <label for="tcu-color">' . __('Text color', 'text-color-uploader') . '</label>  
+  <input type="color" name="tcu-color" id="tcu-color">  
+  </div>  
 
-</div>
+  <div class="input-group">  
+  <label for="tcu-div-bg-color">' . __('Link Color', 'text-color-uploader') . '</label>  
+ <input type="color" name="tcu-div-bg-color" id="tcu-div-bg-color" value="#ffffff" onchange="tcu_update_preview()" />  
+ </div>  
 
+  <div class="input-group">  
+  <label for="tcu-border-color">' . __('Border Color', 'text-color-uploader') . '</label>  
+  <input type="color" name="tcu-border-color" id="tcu-border-color">  
+  </div>  
+  </div>  
+  <label for="tcu-border-radius">' . __('Border Radius', 'text-color-uploader') . '</label>  
+ <input type="range" name="tcu-border-radius" id="tcu-border-radius" min="0" max="25" step="1" value="0" list="tcu-border-radius-steps">  
 
-                   <div class="input-group">
-                     <label for="tcu-border-color">' . __('Border Color', 'text-color-uploader') . '</label>
-                     <input type="color" name="tcu-border-color" id="tcu-border-color">
-                   </div>
-                 </div>
-                 <label for="tcu-border-radius">' . __('Border Radius', 'text-color-uploader') . '</label>
-<input type="range" name="tcu-border-radius" id="tcu-border-radius" min="0" max="25" step="1" value="0" list="tcu-border-radius-steps">
+  <datalist id="tcu-border-radius-steps">  
+  <option value="0">  
+  <option value="5">  
+  <option value="10">  
+  <option value="15">  
+  <option value="20">  
+  <option value="25">  
+  </datalist>  
 
+  <input type="submit" name="tcu-submit-text"```php
+  value="' . __('Apply', 'text-color-uploader') . '">  
+  <button id="button1" style="background-color;background-color:white;border-radius:30px;"type="button">Template 1</button>
+  <br><br>  
 
+  </form>
 
+   <script>
+  document.getElementById("button1").addEventListener("click", function() {
+    document.getElementById("tcu-color").value = "#000000"; // Pink
+    document.getElementById("tcu-div-bg-color").value = "#FFFFFF"; // White
+    document.getElementById("tcu-border-color").value = "#FFFFFF"; // Red
+    document.getElementById("tcu-border-radius").value = 30; // 30px
 
+    // Handle the tcu-div-bg-color separately
+    var divBgColorInput = document.getElementById("tcu-div-bg-color");
+    divBgColorInput.style.backgroundColor = "transparent";
+  });
+  </script>
 
-                 <datalist id="tcu-border-radius-steps">
-                   <option value="0">
-                   <option value="5">
-                   <option value="10">
-                   <option value="15">
-                   <option value="20">
-                   <option value="25">
-                 </datalist>
-                
-                 <input type="submit" name="tcu-submit-text" value="' . __('Apply', 'text-color-uploader') . '">
-                 <br><br>
-             
-               </form>';
+  ';  
 
-      return $form;
-    }
-  }
-  return '';
-}
+  return $form;  
+  }  
+  }  
+  return '';  
+ }  
 
-
-add_shortcode('tcu_form', 'tcu_create_form');
+ add_shortcode('tcu_form', 'tcu_create_form');
 
 function tcu_save_data() {
   if (isset($_POST['tcu-submit-text']) || isset($_POST['tcu-submit-bg-color'])) {
@@ -125,6 +130,9 @@ function tcu_save_data() {
         array('%s'),
         array('%d')
       );
+
+      // Update the background color in user meta
+      update_user_meta($user_id, 'tcu_body_bg_color', $div_bg_color);
     }
 
     // Redirect to the same page without form data
@@ -133,6 +141,7 @@ function tcu_save_data() {
     exit;
   }
 }
+
 
 add_action('wp_loaded', 'tcu_save_data');
 
@@ -316,6 +325,26 @@ add_action('wp_ajax_tcu_save_order', 'tcu_save_order');
 function tcu_delete_text() {
   check_ajax_referer('tcu_delete_text', 'nonce');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (isset($_POST['id']) && !empty($_POST['id'])) {
     $id = intval($_POST['id']);
     $user_id = get_current_user_id();
@@ -356,6 +385,28 @@ function tcu_delete_item() {
 }
 
 add_action('wp_ajax_tcu_delete_item', 'tcu_delete_item');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
