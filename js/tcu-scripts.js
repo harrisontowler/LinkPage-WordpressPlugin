@@ -71,7 +71,6 @@ jQuery(document).ready(function($) {
 
 
 
-
 document.addEventListener('DOMContentLoaded', function () {
   const scDropdownBtns = document.querySelectorAll('.sc-dropdown-btn');
 
@@ -90,14 +89,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
-
-
-
-
-
-
-
 jQuery(document).ready(function($) {
   $('.spotify-dropdown-btn').on('click', function(e) {
     e.stopPropagation();
@@ -105,8 +96,6 @@ jQuery(document).ready(function($) {
     // Your existing code for showing or hiding the Spotify widget
   });
 });
-
-
 
 // Function to toggle the visibility of the SoundCloud widget
 function toggleSoundCloudWidget(event) {
@@ -119,24 +108,14 @@ function toggleSoundCloudWidget(event) {
 // Attach the click event listener to the sc-dropdown-btn button
 jQuery(document).on('click', '.sc-dropdown-btn', toggleSoundCloudWidget);
 
-
-
-
-
-
 // YouTube dropdown button click event
 jQuery('.youtube-dropdown-btn').on('click', function (e) {
   e.stopPropagation();
-    e.preventDefault();
-    var id = jQuery(this).data('id');
-    var container = jQuery('#youtube-widget-container-' + id);
-    container.slideToggle();
+  e.preventDefault();
+  var id = jQuery(this).data('id');
+  var container = jQuery('#youtube-widget-container-' + id);
+  container.slideToggle();
 });
-
-
- 
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
   const tcuForm = document.getElementById('tcu-form');
@@ -144,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const tcuUrl = document.getElementById('tcu-url');
   const tcuColor = document.getElementById('tcu-color');
   const tcuBorderColor = document.getElementById('tcu-border-color');
-  const tcuDivBgColor = document.getElementById('tcu-div-bg-color'); 
+  const tcuDivBgColor = document.getElementById('tcu-div-bg-color');
   const tcuBorderRadius = document.getElementById('tcu-border-radius');
   const tcuPreviewElement = document.getElementById('tcu-preview-element');
 
@@ -153,10 +132,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const updatePreviewStyles = () => {
       tcuPreviewElement.style.color = tcuColor.value;
       tcuPreviewElement.style.borderColor = tcuBorderColor.value;
-        tcuPreviewElement.style.borderWidth = '2px'; // Add this line
-  tcuPreviewElement.style.borderStyle = 'solid'; // Add this line
+      tcuPreviewElement.style.borderWidth = '2px'; // Add this line
+      tcuPreviewElement.style.borderStyle = 'solid'; // Add this line
       tcuPreviewElement.style.borderRadius = tcuBorderRadius.value + 'px';
-      tcuPreviewElement.style.backgroundColor = tcuDivBgColor.value; 
+      tcuPreviewElement.style.backgroundColor = tcuDivBgColor.value;
       tcuPreviewElement.innerHTML = tcuText.value || 'Text preview';
     };
 
@@ -167,14 +146,29 @@ document.addEventListener('DOMContentLoaded', function() {
     tcuText.addEventListener('input', updatePreviewStyles);
     tcuColor.addEventListener('input', updatePreviewStyles);
     tcuBorderColor.addEventListener('input', updatePreviewStyles);
-    tcuDivBgColor.addEventListener('input', updatePreviewStyles); 
+    tcuDivBgColor.addEventListener('input', updatePreviewStyles);
     tcuBorderRadius.addEventListener('input', updatePreviewStyles);
 
-    tcuForm.addEventListener('submit', function(event) {
-      // If you're using an AJAX request for form submission, include
-      // event.preventDefault(); inside the AJAX request's conditional statement.
-      // Add your form submission logic here.
-    });
+    // Get the button element
+    const button1 = document.getElementById('button1');
+
+    if (button1) {
+        button1.addEventListener('click', function() {
+            // Set the input values to the styles you want
+            tcuText.value = '';
+            tcuColor.value = '#000000';
+            tcuBorderColor.value = '#000000';
+            tcuDivBgColor.value = '#FFFFFF';
+            tcuBorderRadius.value = '10';
+
+            // Dispatch an 'input' event on each of the input elements
+            tcuText.dispatchEvent(new Event('input'));
+            tcuColor.dispatchEvent(new Event('input'));
+            tcuBorderColor.dispatchEvent(new Event('input'));
+            tcuDivBgColor.dispatchEvent(new Event('input'));
+            tcuBorderRadius.dispatchEvent(new Event('input'));
+        });
+    }
   }
 });
 
@@ -257,13 +251,8 @@ document.querySelectorAll('.tcu-text-item').forEach((item, index) => {
 
 
 
-
-
-
-
-
-
 // Attach event listeners for updating the live preview
+
 document.getElementById('tcu-text').addEventListener('input', tcu_update_preview);
 document.getElementById('tcu-color').addEventListener('change', tcu_update_preview);
 document.getElementById('tcu-border-color').addEventListener('change', tcu_update_preview);
