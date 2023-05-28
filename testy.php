@@ -61,10 +61,15 @@ function tcu_create_form() {
   <option value="20">  
   <option value="25">  
   </datalist>  
+  
 
   <input type="submit" name="tcu-submit-text"```php
   value="' . __('Apply', 'text-color-uploader') . '">  
-  <button id="button1" style="background-color;background-color:white;border-radius:30px;"type="button">Template 1</button>
+  
+  
+  <button id="button1" class="class1button" style="background-color:#FFFFFF!important; border-radius:10px!important; border: 2px solid black!important; outline:none!important;
+" type="button">Template 1</button>
+  
   <br><br>  
 
   </form>
@@ -73,7 +78,7 @@ function tcu_create_form() {
   document.getElementById("button1").addEventListener("click", function() {
     document.getElementById("tcu-color").value = "#000000"; // Pink
     document.getElementById("tcu-div-bg-color").value = "#FFFFFF"; // White
-    document.getElementById("tcu-border-color").value = "#FFFFFF"; // Red
+    document.getElementById("tcu-border-color").value = "#FFFFFF"; // 
     document.getElementById("tcu-border-radius").value = 30; // 30px
 
     // Handle the tcu-div-bg-color separately
