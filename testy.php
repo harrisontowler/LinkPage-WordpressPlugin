@@ -62,15 +62,25 @@ function tcu_create_form() {
   <option value="25">  
   </datalist>  
   
+  
 
   <input type="submit" name="tcu-submit-text"```php
   value="' . __('Apply', 'text-color-uploader') . '">  
   
+  <button id="button3" class="class2button" style="background-color:#FFFFFF!important;border-radius:0px!important;border:2px solid black!important;outline:none!important;" type="button">Template</button>
   
-  <button id="button1" class="class1button" style="background-color:#FFFFFF!important; border-radius:10px!important; border: 2px solid black!important; outline:none!important;
-" type="button">Template 1</button>
+  
+<button id="button1" class="class1button" style="background-color:#FFFFFF!important;border-radius:10px!important;border:2px solid black!important;outline:none!important;" type="button">Template</button>
+  
+
+<button id="button2" class="class2button" style="background-color:#FFFFFF!important;border-radius:30px!important;border:2px solid black!important;outline:none!important;" type="button">Template</button>
+
+
+  
   
   <br><br>  
+
+
 
   </form>
 
