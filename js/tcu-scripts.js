@@ -228,6 +228,38 @@ jQuery(document).ready(function() {
 
 
 
+// Initial counter setup
+let linkCounters = new Map();
+
+document.querySelectorAll('.tcu-text-item').forEach((item, index) => {
+    // Initialize counter for this item or retrieve from localStorage
+    let currentCount = localStorage.getItem(`counter${index}`);
+    linkCounters.set(index, currentCount ? parseInt(currentCount) : 0);
+  
+    // Create a span element to display the click count
+    let countSpan = document.createElement('span');
+    countSpan.id = `counter${index}`;
+    countSpan.style.marginLeft = '10px';
+    countSpan.innerText = currentCount ? currentCount : 0;
+    item.parentNode.insertBefore(countSpan, item.nextSibling);
+  
+    // Add click event listener
+    item.addEventListener('click', function(e) {
+        // Increment counter and update the display
+        let count = linkCounters.get(index);
+        linkCounters.set(index, ++count);
+        localStorage.setItem(`counter${index}`, count); // store the updated counter value in localStorage
+        document.getElementById(`counter${index}`).innerText = count;
+    });
+});
+
+
+
+
+
+
+
+
 
 
 
