@@ -27,11 +27,11 @@ function tcu_create_form() {
   $form = '<form id="tcu-form" method="post">  
   <div id="tcu-preview" style="margin-bottom: 20px;">  
   <h4>' . __('Link preview', 'text-color-uploader') . '</h4>  
-  <div id="tcu-preview-element" style="padding: 10px; margin-bottom: 10px; text-align: center; display: flex; align-items: center; justify-content: center;"></div>  
+  <div id="tcu-preview-element" style="padding: 10px; margin-bottom: 10px; text-align: center; display: block; align-items: center; justify-content: center;"></div>  
 
   </div>  
   <label for="tcu-text">' . __('Text', 'text-color-uploader') . '</label>  
-  <textarea name="tcu-text" id="tcu-text"></textarea>  
+  <textarea name="tcu-text" id="tcu-text" style="resize:none; "></textarea>  
   <label for="tcu-url">' . __('URL', 'text-color-uploader') . '</label>  
   <input type="url" name="tcu-url" id="tcu-url" style="padding-left:10px;">  
   <div class="input-row">  
@@ -228,7 +228,7 @@ foreach ($sorted_results as $result) {
     
     
 $output .= '<div id="tcu-text-' . esc_attr($result->id) . '" class="tcu-text-item"><span class="handle">&#x2630;</span><span class="delete-icon" data-id="' . esc_attr($result->id) . '">&#x2715;</span>';
-$output .= '<a href="' . esc_url($result->url) . '" class="aref" style="text-decoration: none;"><div style="background-color: ' . esc_attr($result->bg_color) . '; color: ' . esc_attr($result->color) . '; border: 2px solid ' . esc_attr($result->border_color) . '; border-radius: ' . esc_attr($result->border_radius) . 'px; padding: 10px; margin-bottom: 10px; text-align: center; display: flex; align-items: center; justify-content: center;">' . esc_html($result->text);
+$output .= '<a href="' . esc_url($result->url) . '" class="aref" style="text-decoration: none;"><div style="background-color: ' . esc_attr($result->bg_color) . '; color: ' . esc_attr($result->color) . '; border: 2px solid ' . esc_attr($result->border_color) . '; border-radius: ' . esc_attr($result->border_radius) . 'px; padding: 10px; margin-bottom: 10px; text-align: center; display: block; align-items: center; justify-content: center;">' . esc_html($result->text);
 
 
 
