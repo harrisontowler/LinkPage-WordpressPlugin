@@ -1,7 +1,7 @@
 # LinkPage-WordpressPlugin
 This is a WordPress plugin that can be installed on your site. It works exactly the same as Linktr.ee but with a few added features.
 
-[please visit https://lnkz.bio/store/admin/toc/ to view the link page]
+[please visit https://lnkz.bio/store/admin/links/ to view the link page]
 In a nutshell: Since I have built this code with WooCommerce in mind, the plugin allows all users to have their own personal shop where they can sell physical/digital content. The version I am using also has Dokan Multivendor Marketplace installed (which converts WooCommerce into a multivendor site similar to eBay). This allows more than one user to sign up and have their own Link-Page and shop associated with that link-page.
 
 Functionality: What does the code actually do? The way I have structured the code is as follows: When the user is on their personal link-page, they will be prompted with a user-input field. The input field allows Spotify/SoundCloud (playlists or single tracks)/YouTube/Twitter URLs. So when a user pastes the URL of a shared video or song, the code automatically converts the embed to an iframe. This saves the user from actually searching for the embed link of something they want to share. They can simply copy and paste the share URL, and the code converts the output to an iframe, which then displays the chosen URL into a widget. These widgets will be shown with a dropdown handle to the left-hand side of the uploaded link when submitted. If it is pressed, the widget opens like this: ![](IMG-screenshots/youtube.png), and can be toggled to close the display afterward.
