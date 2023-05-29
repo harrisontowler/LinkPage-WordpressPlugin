@@ -32,18 +32,28 @@ function tcu_create_form() {
   </div>  
   <label for="tcu-text">' . __('Text', 'text-color-uploader') . '</label>  
   <textarea name="tcu-text" id="tcu-text" maxlength="80" style="resize:none; "></textarea>  
+  
+  
+  
   <label for="tcu-url">' . __('URL', 'text-color-uploader') . '</label>  
   <input type="url" name="tcu-url" id="tcu-url" style="padding-left:10px;">  
   <div class="input-row">  
+  
+  
   <div class="input-group">  
   <label for="tcu-color">' . __('Text color', 'text-color-uploader') . '</label>  
   <input type="color" name="tcu-color" id="tcu-color">  
   </div>  
 
-  <div class="input-group">  
+
+<div class="input-group">  
   <label for="tcu-div-bg-color">' . __('Link Color', 'text-color-uploader') . '</label>  
  <input type="color" name="tcu-div-bg-color" id="tcu-div-bg-color" value="#ffffff" onchange="tcu_update_preview()" />  
+ 
+  <label for="tcu-div-bg-color">' . __('Link Color', 'text-color-uploader') . '</label>  
+ <input type="checkbox" name="tcu-div-bg-color" id="tcu-div-bg-color" value="" onchange="tcu_update_preview()" />  
  </div>  
+
 
   <div class="input-group">  
   <label for="tcu-border-color">' . __('Border Color', 'text-color-uploader') . '</label>  
@@ -106,7 +116,6 @@ function tcu_create_form() {
  }  
 
  add_shortcode('tcu_form', 'tcu_create_form');
-
 function tcu_save_data() {
   if (isset($_POST['tcu-submit-text']) || isset($_POST['tcu-submit-bg-color'])) {
     global $wpdb;
