@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const tcuColor = document.getElementById('tcu-color');
   const tcuBorderColor = document.getElementById('tcu-border-color');
   const tcuDivBgColor = document.getElementById('tcu-div-bg-color');
+  
   const tcuBorderRadius = document.getElementById('tcu-border-radius');
   const tcuPreviewElement = document.getElementById('tcu-preview-element');
 
@@ -231,6 +232,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
   const tcuForm = document.getElementById('tcu-form');
   const tcuText = document.getElementById('tcu-text');
@@ -324,6 +335,8 @@ jQuery(document).ready(function($) {
 
 
 
+
+
 jQuery(document).ready(function() {
     jQuery(document).on('click', '.twitter-dropdown-btn', function(event) {
         event.preventDefault();
@@ -366,6 +379,8 @@ document.querySelectorAll('.tcu-text-item').forEach((item, index) => {
         document.getElementById(`counter${index}`).innerText = count;
     });
 });
+
+
 
 
 
