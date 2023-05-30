@@ -30,35 +30,63 @@ function tcu_create_form() {
   <div id="tcu-preview-element" style="padding: 10px; margin-bottom: 10px; text-align: center; display: block; align-items: center; justify-content: center;"></div>  
 
   </div>  
-  <label for="tcu-text">' . __('Text', 'text-color-uploader') . '</label>  
-  <textarea name="tcu-text" id="tcu-text" maxlength="80" style="resize:none; "></textarea>  
+  <label for="tcu-text">' . __('', 'text-color-uploader') . '</label>  
+ <textarea name="tcu-text" id="tcu-text" maxlength="80" style="resize: none;" placeholder="Your text here"></textarea>
+
   
   
   
-  <label for="tcu-url">' . __('URL', 'text-color-uploader') . '</label>  
-  <input type="url" name="tcu-url" id="tcu-url" style="padding-left:10px;">  
+  <label for="tcu-url">' . __('', 'text-color-uploader') . '</label>  
+  <input type="url" name="tcu-url" id="tcu-url" class="linkurl"  placeholder="Your links here">  
   <div class="input-row">  
   
   
   <div class="input-group">  
-  <label for="tcu-color">' . __('Text color', 'text-color-uploader') . '</label>  
+  <label for="tcu-color">' . __('Text', 'text-color-uploader') . '</label>  
   <input type="color" name="tcu-color" id="tcu-color">  
   </div>  
 
 
 <div class="input-group">  
-  <label for="tcu-div-bg-color">' . __('Link Color', 'text-color-uploader') . '</label>  
+  <label for="tcu-div-bg-color">' . __('Background', 'text-color-uploader') . '</label>  
  <input type="color" name="tcu-div-bg-color" id="tcu-div-bg-color" value="#ffffff" onchange="tcu_update_preview()" />  
- 
-  <label for="tcu-div-bg-color">' . __('Link Color', 'text-color-uploader') . '</label>  
- <input type="checkbox" name="tcu-div-bg-color" id="tcu-div-bg-color" value="" onchange="tcu_update_preview()" />  
- </div>  
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <div class="input-group">  
-  <label for="tcu-border-color">' . __('Border Color', 'text-color-uploader') . '</label>  
+  <label for="tcu-border-color">' . __('Border', 'text-color-uploader') . '</label>  
   <input type="color" name="tcu-border-color" id="tcu-border-color">  
   </div>  
+  
+  
+  
+  <div class="input-group">
+  <label for="tcu-div-bg-color">' . __('Transparent', 'text-color-uploader') . '</label>  
+  <label class="switch">
+    <input type="checkbox" name="tcu-div-bg-color" id="tcu-div-bg-color" value="" onchange="tcu_update_preview()" />
+    <span class="slider round"></span>
+  </label>  
+</div>
+  
+  
   </div>  
   <label for="tcu-border-radius">' . __('Border Radius', 'text-color-uploader') . '</label>  
  <input type="range" name="tcu-border-radius" id="tcu-border-radius" min="0" max="25" step="1" value="0" list="tcu-border-radius-steps">  
@@ -116,6 +144,7 @@ function tcu_create_form() {
  }  
 
  add_shortcode('tcu_form', 'tcu_create_form');
+
 function tcu_save_data() {
   if (isset($_POST['tcu-submit-text']) || isset($_POST['tcu-submit-bg-color'])) {
     global $wpdb;
