@@ -59,16 +59,43 @@ function tcu_create_form() {
 
 
 
- <div class="input-group">
+
+
+
+
+
+
+
+
+<div class="input-group">
     <label for="tcu-font-style">' . __('Font Style', 'text-color-uploader') . '</label>
-    <select name="tcu-font-style" id="tcu-font-style">
-      <option value="Arial">Arial</option>
-      <option value="Courier New">Courier New</option>
-      <option value="Georgia">Georgia</option>
-      <option value="Times New Roman">Times New Roman</option>
-      <option value="Verdana">Verdana</option>
+    <select name="tcu-font-style" id="tcu-font-style" style="border-radius: 5px;
+    padding-bottom: 2.5px; padding-top:2.5px;">
+        <option value="Arial">Arial</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Verdana">Verdana</option>
+   
+        <option value="Italic">Italic</option>
+      
     </select>
-  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -279,7 +306,7 @@ foreach ($sorted_results as $result) {
     
     
 $output .= '<div id="tcu-text-' . esc_attr($result->id) . '" class="tcu-text-item"    "><span class="handle">&#x2630;</span><span class="delete-icon" data-id="' . esc_attr($result->id) . '">&#x2715;</span>';
-$output .= '<a href="' . esc_url($result->url) . '" class="aref" style="text-decoration: none;"><div style="background-color: ' . esc_attr($result->bg_color) . '; color: ' . esc_attr($result->color) . '; border: 2px solid ' . esc_attr($result->border_color) . '; border-radius: ' . esc_attr($result->border_radius) . 'px; padding: 10px; margin-bottom: 10px; text-align: center; display: block; align-items: center; justify-content: center; font-family:' . esc_attr($result->font_style) . ';">' . esc_html($result->text);
+$output .= '<a href="' . esc_url($result->url) . '" class="aref" style="text-decoration: none;"><div style="background-color: ' . esc_attr($result->bg_color) . '; color: ' . esc_attr($result->color) . '; border: 2px solid ' . esc_attr($result->border_color) . '; border-radius: ' . esc_attr($result->border_radius) . 'px; padding: 10px; padding-top:12px; padding-bottom:12px; margin-bottom: 16px; text-align: center; display: block; align-items: center; justify-content: center; font-family:' . esc_attr($result->font_style) . ';">' . esc_html($result->text);
 
 
 
