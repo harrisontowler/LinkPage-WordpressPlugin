@@ -59,7 +59,16 @@ function tcu_create_form() {
 
 
 
-
+ <div class="input-group">
+    <label for="tcu-font-style">' . __('Font Style', 'text-color-uploader') . '</label>
+    <select name="tcu-font-style" id="tcu-font-style">
+      <option value="Arial">Arial</option>
+      <option value="Courier New">Courier New</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Times New Roman">Times New Roman</option>
+      <option value="Verdana">Verdana</option>
+    </select>
+  </div>
 
 
 
@@ -157,24 +166,25 @@ function tcu_save_data() {
     $border_color = isset($_POST['tcu-border-color']) ? sanitize_hex_color($_POST['tcu-border-color']) : '';
     $border_radius = isset($_POST['tcu-border-radius']) ? intval($_POST['tcu-border-radius']) : 0;
     $div_bg_color = isset($_POST['tcu-div-bg-color']) ? sanitize_hex_color($_POST['tcu-div-bg-color']) : '';
-
+$font_style = isset($_POST['tcu-font-style']) ? sanitize_text_field($_POST['tcu-font-style']) : 'Arial';
     $url = isset($_POST['tcu-url']) ? esc_url_raw($_POST['tcu-url']) : '';
     $user_id = get_current_user_id();
 
     if (isset($_POST['tcu-submit-text'])) {
       // Insert the new text data
       $wpdb->insert(
-        $table_name,
-        array(
-          'user_id' => $user_id,
-          'text' => $text,
-          'color' => $color,
-          'border_color' => $border_color,
-          'border_radius' => $border_radius,
-          'bg_color' => $div_bg_color,
-          'url' => $url,
-        ),
-        array('%d', '%s', '%s', '%s', '%d', '%s', '%s')
+    $table_name,
+    array(
+      'user_id' => $user_id,
+      'text' => $text,
+      'color' => $color,
+      'border_color' => $border_color,
+      'border_radius' => $border_radius,
+      'bg_color' => $div_bg_color,
+      'font_style' => $font_style,
+      'url' => $url,
+    ),
+    array('%d', '%s', '%s', '%s', '%d', '%s', '%s', '%s')
       );
     } else {
       // Update the background color
@@ -206,17 +216,18 @@ function tcu_create_table() {
   $table_name = $wpdb->prefix . 'text_color_data';
   $charset_collate = $wpdb->get_charset_collate();
 
-  $sql = "CREATE TABLE $table_name (
-    id bigint(20) NOT NULL AUTO_INCREMENT,
-    user_id bigint(20) NOT NULL,
-    text text NOT NULL,
-    color varchar(7) NOT NULL,
-    border_color varchar(7) NOT NULL,
-    border_radius int(11) NOT NULL,
-    bg_color varchar(7) NOT NULL,
-    url varchar(255) NOT NULL,
-    PRIMARY KEY  (id)
-  ) $charset_collate;";
+$sql = "CREATE TABLE $table_name (
+  id bigint(20) NOT NULL AUTO_INCREMENT,
+  user_id bigint(20) NOT NULL,
+  text text NOT NULL,
+  color varchar(7) NOT NULL,
+  border_color varchar(7) NOT NULL,
+  border_radius int(11) NOT NULL,
+  bg_color varchar(7) NOT NULL,
+  font_style varchar(20) NOT NULL DEFAULT 'Arial',
+  url varchar(255) NOT NULL,
+  PRIMARY KEY  (id)
+) $charset_collate;";
 
   require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
   dbDelta($sql);
@@ -240,7 +251,7 @@ function tcu_show_text() {
     // Check if the user is viewing their own profile
     $is_own_profile = (get_current_user_id() == $profile_user_id) ? 'own-profile' : '';
 
-    $results = $wpdb->get_results($wpdb->prepare("SELECT id, text, color, border_color, border_radius, bg_color, url FROM $table_name WHERE user_id = %d", $profile_user_id));
+    $results = $wpdb->get_results($wpdb->prepare("SELECT id, text, color, border_color, border_radius, bg_color, font_style, url FROM $table_name WHERE user_id = %d", $profile_user_id));
 
     if ($results) {
         $sorted_results = array();
@@ -268,7 +279,7 @@ foreach ($sorted_results as $result) {
     
     
 $output .= '<div id="tcu-text-' . esc_attr($result->id) . '" class="tcu-text-item"    "><span class="handle">&#x2630;</span><span class="delete-icon" data-id="' . esc_attr($result->id) . '">&#x2715;</span>';
-$output .= '<a href="' . esc_url($result->url) . '" class="aref" style="text-decoration: none;"><div style="background-color: ' . esc_attr($result->bg_color) . '; color: ' . esc_attr($result->color) . '; border: 2px solid ' . esc_attr($result->border_color) . '; border-radius: ' . esc_attr($result->border_radius) . 'px; padding: 10px; margin-bottom: 10px; text-align: center; display: block; align-items: center; justify-content: center;">' . esc_html($result->text);
+$output .= '<a href="' . esc_url($result->url) . '" class="aref" style="text-decoration: none;"><div style="background-color: ' . esc_attr($result->bg_color) . '; color: ' . esc_attr($result->color) . '; border: 2px solid ' . esc_attr($result->border_color) . '; border-radius: ' . esc_attr($result->border_radius) . 'px; padding: 10px; margin-bottom: 10px; text-align: center; display: block; align-items: center; justify-content: center; font-family:' . esc_attr($result->font_style) . ';">' . esc_html($result->text);
 
 
 
