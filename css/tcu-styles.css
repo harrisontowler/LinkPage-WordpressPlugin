@@ -1,4 +1,141 @@
 
+.dokan-single-store .profile-frame .profile-info-box .profile-info-summery-wrapper .profile-info-summery .profile-info-head .profile-img img { padding:0px!important;
+border:0px!important;}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.class1button { border-color:white!important;}
+  
+.onlyfans-dropdown-btn {
+  position: absolute;
+  padding:10px;
+  background-color:#ffffff00;
+  left: 5px;
+ 
+}
+  
+  
+  
+  
+  
+  
+  
+  
 .youtube-dropdown-btn {
   position: absolute;
   padding:10px;
@@ -63,8 +200,17 @@ background-color:red!important;}
 padding-left:10%;
 padding-right:10%;}
 
+
+@media(min-width: 479px) {
+  #tcu-text-container {
+    padding-left: 30%;
+    padding-right: 30%;
+  }
+}
+
+@media(max-width: 478px) {
 #tcu-text-container{padding-left:10%;
-padding-right:10%;}
+padding-right:10%;}}
 
 
 #tcu-form {
@@ -200,7 +346,7 @@ label {
     margin-right: -64px;
 border-radius:12px;}
 
-#linkurl{padding-left:65px!important;
+#linkurl{
 border-radius:8px;}
 
 
@@ -219,8 +365,7 @@ border-radius:8px;}
 }
 
 #tcu-url {
-    padding-left: 0px!important; /* Adjust this value based on the width of the hutl.ink/ text */
-    border: 1px solid #ced4da; /* Adjust this value to match the border color of the input field */
+   border: 1px solid #ced4da; /* Adjust this value to match the border color of the input field */
     border-radius: 3px;
 }
 
