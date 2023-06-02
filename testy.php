@@ -67,10 +67,6 @@ function tcu_create_form() {
 
 
 
-
-
-
-
   <div class="input-group">  
   <label for="tcu-border-color">' . __('Border', 'text-color-uploader') . '</label>  
   <input type="color" name="tcu-border-color" id="tcu-border-color">  
@@ -104,6 +100,12 @@ function tcu_create_form() {
 
   <input type="submit" name="tcu-submit-text"```php
   value="' . __('Apply', 'text-color-uploader') . '">  
+  
+  
+  
+  
+  
+  
   
   <button id="button3" class="class2button" style="background-color:#FFFFFF!important;border-radius:0px!important;border:2px solid black!important;outline:none!important;" type="button">Template</button>
   
@@ -265,7 +267,7 @@ foreach ($sorted_results as $result) {
     if (!empty($result->text) && !empty($result->color)) {
     
     
-$output .= '<div id="tcu-text-' . esc_attr($result->id) . '" class="tcu-text-item"><span class="handle">&#x2630;</span><span class="delete-icon" data-id="' . esc_attr($result->id) . '">&#x2715;</span>';
+$output .= '<div id="tcu-text-' . esc_attr($result->id) . '" class="tcu-text-item"    "><span class="handle">&#x2630;</span><span class="delete-icon" data-id="' . esc_attr($result->id) . '">&#x2715;</span>';
 $output .= '<a href="' . esc_url($result->url) . '" class="aref" style="text-decoration: none;"><div style="background-color: ' . esc_attr($result->bg_color) . '; color: ' . esc_attr($result->color) . '; border: 2px solid ' . esc_attr($result->border_color) . '; border-radius: ' . esc_attr($result->border_radius) . 'px; padding: 10px; margin-bottom: 10px; text-align: center; display: block; align-items: center; justify-content: center;">' . esc_html($result->text);
 
 
@@ -321,6 +323,15 @@ if (preg_match('/(?:youtube\.com|youtu\.be)/i', $result->url)) {
 
     $output .= '<div id="youtube-widget-container-' . esc_attr($result->id) . '" class="youtube-widget-container" style="display: none; margin-top:-10px; "><iframe id="youtube-widget-' . esc_attr($result->id) . '" src="https://www.youtube.com/embed/' . $video_id . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:100%; border: 2px solid white; border-radius:12px;"></iframe></div>';
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -438,13 +449,6 @@ function tcu_delete_item() {
 }
 
 add_action('wp_ajax_tcu_delete_item', 'tcu_delete_item');
-
-
-
-
-
-
-
 
 
 
