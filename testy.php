@@ -306,7 +306,7 @@ foreach ($sorted_results as $result) {
     
     
 $output .= '<div id="tcu-text-' . esc_attr($result->id) . '" class="tcu-text-item"    "><span class="handle">&#x2630;</span><span class="delete-icon" data-id="' . esc_attr($result->id) . '">&#x2715;</span>';
-$output .= '<a href="' . esc_url($result->url) . '" class="aref" style="text-decoration: none;"><div style="background-color: ' . esc_attr($result->bg_color) . '; color: ' . esc_attr($result->color) . '; border: 2px solid ' . esc_attr($result->border_color) . '; border-radius: ' . esc_attr($result->border_radius) . 'px; padding: 10px; padding-top:12px; padding-bottom:12px; margin-bottom: 16px; text-align: center; display: block; align-items: center; justify-content: center; font-family:' . esc_attr($result->font_style) . ';">' . esc_html($result->text);
+$output .= '<a href="' . esc_url($result->url) . '" class="aref" style="text-decoration: none;"><div style="background-color: ' . esc_attr($result->bg_color) . '; color: ' . esc_attr($result->color) . '; border: 2px solid ' . esc_attr($result->border_color) . '; border-radius: ' . esc_attr($result->border_radius) . 'px; padding: 10px; padding-top:12.5px; padding-bottom:12.5px; margin-bottom: 16px; text-align: center; display: block; align-items: center; justify-content: center; font-family:' . esc_attr($result->font_style) . ';">' . esc_html($result->text);
 
 
 
