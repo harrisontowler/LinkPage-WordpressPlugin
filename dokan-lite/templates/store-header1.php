@@ -2,7 +2,7 @@
 $store_user    = dokan()->vendor->get( get_query_var( 'author' ) );
 $store_info    = $store_user->get_shop_info();
 $social_info   = $store_user->get_social_profiles();
-$store_tabs    = dokan_get_store_tabs( $store_user->get_id() );
+
 $social_fields = dokan_get_social_profile_fields();
 
 $dokan_store_times = ! empty( $store_info['dokan_store_time'] ) ? $store_info['dokan_store_time'] : [];
@@ -42,12 +42,7 @@ if ( 'layout3' === $profile_layout ) {
     <div class="profile-frame<?php echo esc_attr( $no_banner_class ); ?>">
 
         <div class="profile-info-box profile-layout-<?php echo esc_attr( $profile_layout ); ?>">
-            <?php if ( $store_user->get_banner() ) { ?>
-              
-                 
-            <?php } else { ?>
-                <div class="profile-info-img dummy-image">&nbsp;</div>
-            <?php } ?>
+           
 
             <div class="profile-info-summery-wrapper dokan-clearfix">
                 <div class="profile-info-summery">
@@ -88,7 +83,7 @@ if ( 'layout3' === $profile_layout ) {
                                 </li>
                             <?php } ?>
 
-                      
+                           
 
                             <?php if ( $show_store_open_close === 'on' && $dokan_store_time_enabled === 'yes' ) : ?>
                                 <li class="dokan-store-open-close">
@@ -146,10 +141,10 @@ if ( 'layout3' === $profile_layout ) {
     <?php if ( $store_tabs ) { ?>
         <div class="dokan-store-tabs<?php echo esc_attr( $no_banner_class_tabs ); ?>">
            
-       
+            <ul class="dokan-list-inline">
                 <?php foreach ( $store_tabs as $key => $tab ) { // phpcs:ignore ?>
                     <?php if ( $tab['url'] ) : ?>
-                       
+                        <li><a href="<?php echo esc_url( $tab['url'] ); ?>"><?php echo esc_html( $tab['title'] ); ?></a></li>
                     <?php endif; ?>
                 <?php } ?>
             </ul>
