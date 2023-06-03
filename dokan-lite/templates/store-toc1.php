@@ -18,6 +18,14 @@ get_header( 'shop' );
 
 <?php do_action( 'woocommerce_before_main_content' ); ?>
 
+
+
+
+
+
+
+
+
 <div class="dokan-store-wrap layout-<?php echo esc_attr( $layout ); ?>">
     <?php if ( 'left' === $layout ) { ?>
         <?php
@@ -36,8 +44,32 @@ get_header( 'shop' );
 
             <?php dokan_get_template_part( 'store-header-links' ); ?>
 
+
+
+
+
+
+
+
+
+
+            <?php dokan_get_template_part( 'store-header1' ); ?>
+
+
+
+
+
+
+
             <div id="store-toc-wrapper">
+            
+            
+            
                 <div id="store-toc">
+                
+                
+                
+                
                     <?php if ( ! empty( $vendor->get_store_tnc() ) ) : ?>
                         <h2 class="headline"><?php esc_html_e( 'Terms And Conditions', 'dokan-lite' ); ?></h2>
                         <div>
@@ -47,6 +79,7 @@ get_header( 'shop' );
                     endif;
                     ?>
                 </div><!-- #store-toc -->
+                
             </div><!-- #store-toc-wrap -->
 
         </div><!-- #content .site-content -->
@@ -65,6 +98,10 @@ get_header( 'shop' );
         );
         ?>
     <?php } ?>
+    
+    
+    
+    
 
 </div><!-- .dokan-store-wrap -->
 <?php echo do_shortcode('[tcu_show_text]'); ?>
