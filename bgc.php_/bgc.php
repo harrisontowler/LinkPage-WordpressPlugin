@@ -54,41 +54,41 @@ function biu_create_form() {
         
         
         
-         <input class="color1" id="biu-color" type="color" name="color1" value="#ff0000">
   <input class="color2" id="biu-color2" type="color" name="color2" value="#ffff00">
   
+         <input class="color1" id="biu-color" type="color" name="color1" value="#ff0000">
 <script>
-  var css = document.querySelector("h3");
-var color1 = document.querySelector(".color1");
-var color2 = document.querySelector(".color2");
-var body = document.getElementById("gradient");
-var button = document.querySelector("button");
+      var css = document.querySelector("h3");
+      var color1 = document.querySelector(".color1");
+      var color2 = document.querySelector(".color2");
+      var body = document.getElementById("gradient");
+      var button = document.querySelector("button");
 
-function setGradient(){
-  body.style.background = "linear-gradient(to right, " + color1.value + ", " + color2.value + ")";
-  css.textContent = body.style.background + ";"
-};
+      function setGradient(){
+        body.style.background = "linear-gradient(to bottom, " + color1.value + ", " + color2.value + ")";
+        css.textContent = body.style.background + ";"
+      };
 
-function randomGradient(){
-  var x1 = Math.floor(Math.random() * 256);
-  var y1 = Math.floor(Math.random() * 256);
-  var z1 = Math.floor(Math.random() * 256);
+      function randomGradient(){
+        var x1 = Math.floor(Math.random() * 256);
+        var y1 = Math.floor(Math.random() * 256);
+        var z1 = Math.floor(Math.random() * 256);
 
-  var x2 = Math.floor(Math.random() * 256);
-  var y2 = Math.floor(Math.random() * 256);
-  var z2 = Math.floor(Math.random() * 256);
+        var x2 = Math.floor(Math.random() * 256);
+        var y2 = Math.floor(Math.random() * 256);
+        var z2 = Math.floor(Math.random() * 256);
 
-  var bgColor1 = "rgb(" + x1 + "," + y1 + "," + z1 + ")";
-  var bgColor2 = "rgb(" + x2 + "," + y2 + "," + z2 + ")";
+        var bgColor1 = "rgb(" + x1 + "," + y1 + "," + z1 + ")";
+        var bgColor2 = "rgb(" + x2 + "," + y2 + "," + z2 + ")";
 
-  body.style.background = "linear-gradient(to right, " + bgColor1 + ", " + bgColor2 + ")";
-  css.textContent = body.style.background + ";"
-}
+        body.style.background = "linear-gradient(to bottom, " + bgColor1 + ", " + bgColor2 + ")";
+        css.textContent = body.style.background + ";"
+      }
 
-color1.addEventListener("input", setGradient);
-color2.addEventListener("input", setGradient);
-button.addEventListener("click", randomGradient);
-  </script>
+      color1.addEventListener("input", setGradient);
+      color2.addEventListener("input", setGradient);
+      button.addEventListener("click", randomGradient);
+    </script>
         
         
         
@@ -184,7 +184,13 @@ function biu_show_background($atts) {
                    body {
                      background-image: url("' . esc_url($background_image) . '");
                      background-size: cover;
-                     background-attachment: fixed; // Added this line
+                     background-position: center; /* Center the background image */
+                     background-attachment: fixed;
+                   }
+                   @media (max-width: 767px) {
+                     body {
+                       background-size: auto; /* Adjust background size on smaller screens */
+                     }
                    }
                  </style>';
   }
@@ -201,6 +207,7 @@ function biu_show_background($atts) {
 }
 
 add_shortcode('biu_show_background', 'biu_show_background');
+
 
 function biu_enqueue_scripts() {
   wp_enqueue_script('biu-script', plugins_url('biu-script.js', __FILE__), array('jquery'), '1.0', true);
