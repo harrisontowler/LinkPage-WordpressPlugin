@@ -24,7 +24,12 @@ function tcu_create_form() {
 
   // Display the form only if the current user is the profile user  
   if ($current_user_id == $profile_user_id) {  
+  
+  
+   
+  
   $form = '<form id="tcu-form" method="post">  
+ 
   <div id="tcu-preview" style="margin-bottom: 20px;">  
   <h4>' . __('Link preview', 'text-color-uploader') . '</h4>  
   <div id="tcu-preview-element" style="padding: 10px; margin-bottom: 10px; text-align: center; display: block; align-items: center; justify-content: center;"></div>  
@@ -38,7 +43,7 @@ function tcu_create_form() {
   
   <label for="tcu-url">' . __('', 'text-color-uploader') . '</label>  
   <input type="url" name="tcu-url" id="tcu-url" class="linkurl"  placeholder="Your links here">  
-  <div class="input-row">  
+  <div class="input-row" style="padding-right:50px;">  
   
   
   <div class="input-group">  
@@ -63,24 +68,6 @@ function tcu_create_form() {
 
 
 
-
-
-
-
-<div class="input-group">
-    <label for="tcu-font-style">' . __('Font Style', 'text-color-uploader') . '</label>
-    <select name="tcu-font-style" id="tcu-font-style" style="border-radius: 5px;
-    padding-bottom: 2.5px; padding-top:2.5px;">
-        <option value="Arial">Arial</option>
-        <option value="Courier New">Courier New</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Times New Roman">Times New Roman</option>
-        <option value="Verdana">Verdana</option>
-   
-        <option value="Italic">Italic</option>
-      
-    </select>
-</div>
 
 
 
@@ -110,6 +97,10 @@ function tcu_create_form() {
   
   
   
+ 
+
+ 
+    
   <div class="input-group">
   <label for="tcu-div-bg-color">' . __('Transparent', 'text-color-uploader') . '</label>  
   <label class="switch">
@@ -119,7 +110,42 @@ function tcu_create_form() {
 </div>
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   </div>  
+  
+  
+  
+    
+  <div class="input-group">
+    <label for="tcu-font-style">' . __('Font Style', 'text-color-uploader') . '</label>
+    <select name="tcu-font-style" id="tcu-font-style" style="border-radius: 5px;
+    padding-bottom: 2.5px; padding-top:2.5px;">
+        <option value="Arial">Arial</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Verdana">Verdana</option>
+   
+        <option value="Italic">Italic</option>
+      
+    </select>
+</div>
+  
+  
+  
+  
+  
+  
+  
   <label for="tcu-border-radius">' . __('Border Radius', 'text-color-uploader') . '</label>  
  <input type="range" name="tcu-border-radius" id="tcu-border-radius" min="0" max="25" step="1" value="0" list="tcu-border-radius-steps">  
 
@@ -389,6 +415,33 @@ add_shortcode('tcu_show_text', 'tcu_show_text');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Enqueue scripts and styles
 function tcu_enqueue_scripts() {
   wp_enqueue_style('tcu-styles', plugin_dir_url(__FILE__) . 'css/tcu-styles.css');
@@ -504,6 +557,36 @@ add_action('wp_ajax_tcu_delete_item', 'tcu_delete_item');
 
 
 
+function vendor_store_link_shortcode($atts) {
+    // Get current logged in user
+    $user = wp_get_current_user();
+
+    if($user->exists()){
+        // If Dokan plugin is installed and active
+        if ( class_exists( 'WeDevs_Dokan' ) ) {
+            // Get the vendor info by the user id
+            $vendor = dokan()->vendor->get( $user->ID );
+
+            if ( $vendor ) {
+                // Get the store URL
+                $store_url = $vendor->get_shop_url();
+
+                // Create a link with FontAwesome house icon
+                // Make sure FontAwesome is loaded on your site
+                $output = '<a href="' . esc_url( $store_url ) . '"><i class="fa fa-home" ></i></a>';
+                
+                return $output;
+            } else {
+                return 'This user is not a vendor.';
+            }
+        } else {
+            return 'Dokan is not active.';
+        }
+    } else {
+        return 'User is not logged in.';
+    }
+}
+add_shortcode('vendor_store_link', 'vendor_store_link_shortcode');
 
 
 
