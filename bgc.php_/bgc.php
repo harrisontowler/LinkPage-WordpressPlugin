@@ -21,21 +21,23 @@ function biu_create_form() {
         <div class="upload-btn">
           <input style="display: none;" type="file" name="biu-image" id="biu-image">
           <label for="biu-image" style="cursor:pointer; border-radius:50%; padding: 10px; background-color: #ccc;">➕</label>
-        </div>
+        </div><br>
         <div class="button-container">
           <input type="submit" name="biu-submit-image" style="border-radius:15px;" value="' . __('Apply Image', 'background-image-uploader') . '">
           <input type="submit" name="biu-submit-color" style="border-radius:15px;" value="' . __('Apply Color', 'background-image-uploader') . '">
           <input type="submit" name="biu-submit-gradient" style="border-radius:15px;" value="' . __('Apply Gradient', 'background-image-uploader') . '">
         </div>
         <div class="color-btn">
-          <label for="biu-color">' . __('Select Color', 'background-image-uploader') . '</label>
+          <label for="biu-color">' . __('Solid Color', 'background-image-uploader') . '</label>
           <input type="color" name="biu-color" id="biu-color">
         </div>
         <div class="color-btn">
-          <label for="biu-color1">' . __('Select Color 1', 'background-image-uploader') . '</label>
-          <input type="color" name="biu-color1" id="biu-color1">
-          <label for="biu-color2">' . __('Select Color 2', 'background-image-uploader') . '</label>
+        
+          <label for="biu-color2">' . __('Gradient Bottom', 'background-image-uploader') . '</label>
           <input type="color" name="biu-color2" id="biu-color2">
+          <label for="biu-color1">' . __('Gradient Top', 'background-image-uploader') . '</label>
+          <input type="color" name="biu-color1" id="biu-color1">
+        
         </div>
         <input type="hidden" name="biu-user-id" value="' . $current_user_id . '">
         ' . wp_nonce_field('biu_upload_data', 'biu_data_nonce', true, false) . '
@@ -134,16 +136,17 @@ function biu_show_background($atts) {
 
     // Generate the inline styles in the header
     $output .= '<style>
-                   body {
+                   body::before {
+                     content: "";
+                     position: fixed; 
+                     top: 0;
+                     left: 0;
+                     height: 100vh; 
+                     width: 100vw; 
+                     z-index: -1; 
                      background-image: url("' . esc_url($background_image) . '");
                      background-size: cover;
-                     background-position: center; /* Center the background image */
-                     background-attachment: fixed;
-                   }
-                   @media (max-width: 767px) {
-                     body {
-                       background-size: auto; /* Adjust background size on smaller screens */
-                     }
+                     background-position: center;
                    }
                  </style>';
   }
