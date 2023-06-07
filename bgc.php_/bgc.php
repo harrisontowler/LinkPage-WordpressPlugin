@@ -25,88 +25,18 @@ function biu_create_form() {
         <div class="button-container">
           <input type="submit" name="biu-submit-image" style="border-radius:15px;" value="' . __('Apply Image', 'background-image-uploader') . '">
           <input type="submit" name="biu-submit-color" style="border-radius:15px;" value="' . __('Apply Color', 'background-image-uploader') . '">
+          <input type="submit" name="biu-submit-gradient" style="border-radius:15px;" value="' . __('Apply Gradient', 'background-image-uploader') . '">
         </div>
-        <div class="color-btn" >
+        <div class="color-btn">
           <label for="biu-color">' . __('Select Color', 'background-image-uploader') . '</label>
           <input type="color" name="biu-color" id="biu-color">
-      
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-  <input class="color2" id="biu-color2" type="color" name="color2" value="#ffff00">
-  
-         <input class="color1" id="biu-color" type="color" name="color1" value="#ff0000">
-<script>
-      var css = document.querySelector("h3");
-      var color1 = document.querySelector(".color1");
-      var color2 = document.querySelector(".color2");
-      var body = document.getElementById("gradient");
-      var button = document.querySelector("button");
-
-      function setGradient(){
-        body.style.background = "linear-gradient(to bottom, " + color1.value + ", " + color2.value + ")";
-        css.textContent = body.style.background + ";"
-      };
-
-      function randomGradient(){
-        var x1 = Math.floor(Math.random() * 256);
-        var y1 = Math.floor(Math.random() * 256);
-        var z1 = Math.floor(Math.random() * 256);
-
-        var x2 = Math.floor(Math.random() * 256);
-        var y2 = Math.floor(Math.random() * 256);
-        var z2 = Math.floor(Math.random() * 256);
-
-        var bgColor1 = "rgb(" + x1 + "," + y1 + "," + z1 + ")";
-        var bgColor2 = "rgb(" + x2 + "," + y2 + "," + z2 + ")";
-
-        body.style.background = "linear-gradient(to bottom, " + bgColor1 + ", " + bgColor2 + ")";
-        css.textContent = body.style.background + ";"
-      }
-
-      color1.addEventListener("input", setGradient);
-      color2.addEventListener("input", setGradient);
-      button.addEventListener("click", randomGradient);
-    </script>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        <div class="color-btn">
+          <label for="biu-color1">' . __('Select Color 1', 'background-image-uploader') . '</label>
+          <input type="color" name="biu-color1" id="biu-color1">
+          <label for="biu-color2">' . __('Select Color 2', 'background-image-uploader') . '</label>
+          <input type="color" name="biu-color2" id="biu-color2">
+        </div>
         <input type="hidden" name="biu-user-id" value="' . $current_user_id . '">
         ' . wp_nonce_field('biu_upload_data', 'biu_data_nonce', true, false) . '
       </form>';
@@ -133,6 +63,8 @@ function biu_save_data() {
     $color = sanitize_hex_color($_POST['biu-color']);
     update_user_meta($user_id, 'biu_background_color', $color);
     delete_user_meta($user_id, 'biu_background_image'); // Delete the background image if a color is selected
+    delete_user_meta($user_id, 'biu_background_color1'); // Delete the gradient colors
+    delete_user_meta($user_id, 'biu_background_color2');
     wp_send_json_success($color);
   } elseif (!empty($_FILES['biu-image']['tmp_name'])) {
     $uploadedfile = $_FILES['biu-image'];
@@ -143,14 +75,31 @@ function biu_save_data() {
     if ($movefile && !isset($movefile['error'])) {
       update_user_meta($user_id, 'biu_background_image', $movefile['url']);
       delete_user_meta($user_id, 'biu_background_color'); // Delete the background color if an image is uploaded
+      delete_user_meta($user_id, 'biu_background_color1'); // Delete the gradient colors
+      delete_user_meta($user_id, 'biu_background_color2');
       wp_send_json_success($movefile['url']);
     } else {
       wp_send_json_error($movefile['error']);
     }
+  } elseif (isset($_POST['biu-color1']) && isset($_POST['biu-color2'])) {
+    $color1 = sanitize_hex_color($_POST['biu-color1']);
+    $color2 = sanitize_hex_color($_POST['biu-color2']);
+    update_user_meta($user_id, 'biu_background_color1', $color1);
+    update_user_meta($user_id, 'biu_background_color2', $color2);
+    delete_user_meta($user_id, 'biu_background_image'); // Delete the background image if a gradient is selected
+    delete_user_meta($user_id, 'biu_background_color'); // Delete the background color
+
+    $gradient_data = array(
+      'color1' => $color1,
+      'color2' => $color2
+    );
+
+    wp_send_json_success($gradient_data);
   }
 
   wp_die();
 }
+
 
 add_action('wp_ajax_biu_save_data', 'biu_save_data');
 
@@ -160,6 +109,8 @@ function biu_show_background($atts) {
     $author_id = $atts['user_id'];
     $background_image = get_user_meta($author_id, 'biu_background_image', true);
     $background_color = get_user_meta($author_id, 'biu_background_color', true);
+    $background_color1 = get_user_meta($author_id, 'biu_background_color1', true);
+    $background_color2 = get_user_meta($author_id, 'biu_background_color2', true);
   } else {
     // Get the current user ID when viewing their own profile
     $current_user_id = get_current_user_id();
@@ -171,6 +122,8 @@ function biu_show_background($atts) {
 
     $background_image = get_user_meta($user_id, 'biu_background_image', true);
     $background_color = get_user_meta($user_id, 'biu_background_color', true);
+    $background_color1 = get_user_meta($user_id, 'biu_background_color1', true);
+    $background_color2 = get_user_meta($user_id, 'biu_background_color2', true);
   }
 
   $output = '';
@@ -203,11 +156,18 @@ function biu_show_background($atts) {
                  </style>';
   }
 
+  if ($background_color1 && $background_color2) {
+    $output .= '<style>
+                   body {
+                     background: linear-gradient(to bottom, ' . esc_attr($background_color1) . ', ' . esc_attr($background_color2) . ');
+                   }
+                 </style>';
+  }
+
   return $output;
 }
 
 add_shortcode('biu_show_background', 'biu_show_background');
-
 
 function biu_enqueue_scripts() {
   wp_enqueue_script('biu-script', plugins_url('biu-script.js', __FILE__), array('jquery'), '1.0', true);
