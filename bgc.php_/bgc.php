@@ -154,6 +154,7 @@ function biu_show_background($atts) {
   if ($background_color) {
     $output .= '<style>
                    body {
+                   
                      background-color: ' . esc_attr($background_color) . ';
                    }
                  </style>';
@@ -161,7 +162,14 @@ function biu_show_background($atts) {
 
   if ($background_color1 && $background_color2) {
     $output .= '<style>
-                   body {
+                   body::before {
+                     content: "";
+                     position: fixed; 
+                     top: 0;
+                     left: 0;
+                     height: 100vh; 
+                     width: 100vw; 
+                     z-index: -1; 
                      background: linear-gradient(to bottom, ' . esc_attr($background_color1) . ', ' . esc_attr($background_color2) . ');
                    }
                  </style>';
